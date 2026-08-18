@@ -58,5 +58,18 @@ def replace_incidents(df: pd.DataFrame) -> int:
     return len(records)
 
 
+def add_incident(record: dict[str, Any]) -> None:
+    """Insert or update a single incident, without touching the rest of the table.
+
+    Used to drop one hand-crafted, realistic incident into the database (see
+    scripts/simulate_incident.py) without replacing the full batch produced
+    by the pipeline.
+    """
+    init_db()
+    with SessionLocal() as session:
+        session.merge(Incident(**_to_row(record)))
+        session.commit()
+
+
 def get_session() -> Session:
     return SessionLocal()
