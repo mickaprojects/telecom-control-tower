@@ -1,4 +1,4 @@
-export default function TopBar({ stats }) {
+export default function TopBar({ stats, searchTerm, onSearchChange }) {
   return (
     <header className="top-bar">
       <div className="top-bar-left">
@@ -9,7 +9,12 @@ export default function TopBar({ stats }) {
         </div>
       </div>
       <div className="top-bar-search">
-        <input type="text" placeholder="Search incidents, regions, folders..." />
+        <input
+          type="text"
+          placeholder="Search incidents, regions, folders..."
+          value={searchTerm}
+          onChange={(e) => onSearchChange(e.target.value)}
+        />
       </div>
       <div className="top-bar-right">
         <span className="top-bar-item">MAP</span>

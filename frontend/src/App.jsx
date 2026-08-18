@@ -12,6 +12,7 @@ export default function App() {
   const [stats, setStats] = useState(null);
   const [selectedFolder, setSelectedFolder] = useState("All");
   const [selectedIncidentId, setSelectedIncidentId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -48,13 +49,36 @@ export default function App() {
   }, []);
 
   const visibleIncidents = useMemo(() => {
-    if (selectedFolder === "All") return incidents;
-    return incidents.filter((incident) => incident.folder === selectedFolder);
-  }, [incidents, selectedFolder]);
+    let result = incidents;
+
+    if (selectedFolder !== "All") {
+      result = result.filter((incident) => incident.folder === selectedFolder);
+    }
+
+    const query = searchTerm.trim().toLowerCase();
+    if (query) {
+      result = result.filter((incident) =>
+        [
+          incident.incident_id,
+          incident.region,
+          incident.incident_type,
+          incident.folder,
+          incident.severity,
+          incident.status,
+          incident.breach_status,
+        ]
+          .join(" ")
+          .toLowerCase()
+          .includes(query)
+      );
+    }
+
+    return result;
+  }, [incidents, selectedFolder, searchTerm]);
 
   return (
     <div className="app">
-      <TopBar stats={stats} />
+      <TopBar stats={stats} searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       {error && (
         <div className="error-banner">
           Backend unreachable ({error}). Start it with: uvicorn app.main:app --reload
