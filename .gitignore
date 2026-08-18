@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+ai/models/*.joblib
+.pytest_cache/
+.streamlit/
+frontend/node_modules/
+frontend/dist/
