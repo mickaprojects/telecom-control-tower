@@ -8,5 +8,5 @@ ai/models/*.joblib
 frontend/node_modules/
 frontend/dist/
 
-# Personal documentation (interview prep, job-offer mapping) — kept local only
-docs/
+# docs/ is a git submodule pointing to a private repo (telecom-control-tower-docs) --
+# tracked via .gitmodules, not ignored here.
