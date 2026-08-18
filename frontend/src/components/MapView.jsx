@@ -10,11 +10,14 @@ const STATUS_COLOR = {
 export default function MapView({ incidents, selectedIncidentId, onSelectIncident }) {
   return (
     <div className="map-panel">
-      <MapContainer center={[48.5, 10.0]} zoom={4} scrollWheelZoom className="leaflet-container">
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
+      <MapContainer
+        center={[48.5, 10.0]}
+        zoom={4}
+        scrollWheelZoom
+        className="leaflet-container"
+        attributionControl={false}
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {incidents.map((incident) => (
           <CircleMarker
             key={incident.incident_id}
