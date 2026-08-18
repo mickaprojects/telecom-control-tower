@@ -2,7 +2,7 @@
 
 SQLite stands in for the MongoDB/BigQuery storage used in the Renault
 Control Tower — swappable for a real database without touching the rest
-of the app (see docs/architecture.md).
+of the app.
 """
 from __future__ import annotations
 

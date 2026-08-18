@@ -7,3 +7,6 @@ ai/models/*.joblib
 .streamlit/
 frontend/node_modules/
 frontend/dist/
+
+# Personal documentation (interview prep, job-offer mapping) — kept local only
+docs/

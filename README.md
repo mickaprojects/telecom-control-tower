@@ -11,9 +11,6 @@ network incidents / service tickets against an SLA deadline — same concept
 (status dashboard, breach alerts, map, folders), different domain and stack
 (Python instead of Java, with an added AI layer).
 
-See `docs/architecture.md` for the full data-flow diagram and the mapping
-from the original Renault stack to this demo and to a production path.
-
 ## Stack
 
 - **Data pipeline**: Apache Beam (Python SDK, `DirectRunner`)

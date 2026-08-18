@@ -4,7 +4,7 @@ Mirrors the role Dataflow/Beam played in the Renault Control Tower project:
 here it computes SLA breach status for each incident and writes the result
 to a sink, exactly like a production batch job would write to GCS/BigQuery.
 Swapping DirectRunner for DataflowRunner is a one-line pipeline-option
-change for a real deployment (see docs/architecture.md).
+change for a real deployment.
 """
 from __future__ import annotations
 
